@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yay! Happy Valentine's Day!</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff0f3;
+            color: #d63384;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            padding: 20px;
+            animation: bounce 2s infinite;
+        }
+        h1 {
+            font-size: 4em;
+            margin: 10px 0;
+            text-shadow: 3px 3px #ffb3c1;
+        }
+        p {
+            font-size: 1.8em;
+            font-weight: 500;
+        }
+        .gif-heart {
+            width: 250px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(214, 51, 132, 0.2);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .back-button {
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #ff4d6d;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1em;
+            transition: 0.3s;
+        }
+        .back-button:hover {
+            background-color: #c9184a;
+        }
+#bg-video {
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(214, 51, 132, 0.2);
+    margin-bottom: 20px;
+    width: 300px !important;  /* Өргөнийг хүчээр 250px болгох */
+    height: 300px !important;  /* Өндөрийг автоматаар тааруулах */
+    min-width: 0 !important;  /* Өмнөх 50% гэсэн утгыг хүчингүй болгох */
+    min-height: 0 !important;
+}  
+    </style>
+</head>
+<body>
+
+    <div class="container">
+    <video id="bg-video" width="400" controls autoplay loop muted>
+  <source src="c:\Users\User\OneDrive\Desktop\val\c9c4b0ce-b1fd-43ef-adb4-bee1c444ec39.mp4" type="video/mp4">
+    </video>
+        
+        <h1>Yayyy! ❤️</h1>
+        <p>Одоо л зөв ярьж байна шдээ ,Хайртай шүү❤️🥰</p>
+        <p style="font-size: 1.2em; color: #ff758f;">Хамтдаа гайхалтай дурсамжийг бүтээцгээе.</p>
+        
+        <a href="valentine.html" class="back-button">Буцах</a>
+    </div>
+
+    <script>
+        // Хуудас ачаалагдахад саа (confetti) бууж эхэлнэ
+        window.onload = function() {
+            var duration = 15 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+              var timeLeft = animationEnd - Date.now();
+
+              if (timeLeft <= 0) {
+                return clearInterval(interval);
+              }
+
+              var particleCount = 50 * (timeLeft / duration);
+              // Хоёр талын булангаас саа буух эффект
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        };
+    </script>
+</body>
+</html>
